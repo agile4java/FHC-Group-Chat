@@ -15,14 +15,47 @@ const container = require('./container');
 require('dotenv').config();
 
 container.resolve(function (users, _) {
-  mongoose.Promise = global.Promise;
-  mongoose.connect(
-    `${process.env.MONGODB_URLPRE}${process.env.MONGODB_USER}:${
-      process.env.MONGODB_PASSWORD
-    }${process.env.MONGODB_URLEND}`, {
-      useNewUrlParser: true
+  //Eddies
+  // mongoose.Promise = global.Promise;
+  // mongoose.connect('mongodb://localhost/footballkik', {
+  //   useMongoClient: true
+  // });
+  //mine
+  const mongoUrl = `${process.env.MONGODB_URLPRE}${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}${process.env.MONGODB_URLEND}`;
+  const dbURI = process.env.MONGO_DBURI;
+
+  const options = {
+    reconnectTries: Number.MAX_VALUE,
+    poolSize: 10
+  }
+
+  mongoose.connect(dbURI, options).then(
+    () => {
+      console.log("Database Connection Established!");
+    },
+    err => {
+      console.log("Error connecting to database: ", err);
     }
   );
+
+
+  // mongoose.Promise = global.Promise;
+  // mongoose.connect(mongoUrl, {
+  //   useNewUrlParser: true
+  // });
+
+  //Atlas Example Connection
+  // const MongoClient = require(‘mongodb’).MongoClient;
+  // const uri = "mongodb+srv://cconway:<password>@nextdaycode001-kbsxd.mongodb.net/test?retryWrites=true";
+  // const client = new MongoClient(uri, {
+  //   useNewUrlParser: true
+  // });
+  // client.connect(err => {
+  //   const collection = client.db("test").collection("devices");
+  //   // perform actions on the collection object
+  //   client.close();
+  // });
+
 
   const app = SetupExpress();
 
@@ -64,16 +97,19 @@ container.resolve(function (users, _) {
         resave: true,
         saveInitialized: true,
         saveUninitialized: true,
-        store: new MongoStore({
-          mongooseConnection: mongoose.connection
-        })
-      })
-    );
+        //Eddies
+        // store: new MongoStore({
+        //   mongooseConnection: mongoose.connection
+        // });
+        //mine
+        // store: new MongoStore({
+        //   mongooseConnection: mongoose.connection
+        }));
+    
     // passport must be added after session
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());
-
     app.locals._ = _;
   }
-});
+})
