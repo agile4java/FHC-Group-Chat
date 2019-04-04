@@ -58,6 +58,11 @@ bson@^1.1.0, bson@^1.1.1, bson@~1.1.0:
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.1.1.tgz#4330f5e99104c4e751e7351859e2d408279f2f13"
   integrity sha512-jCGVYLoYMHDkOsbwJZBCqwMHyH4c+wzgI9hG7Z6SZJRXWr+x58pdIbm2i9a/jFGCkRJqRUr8eoI7lDWa0hTkxg==
 
+bson@~0.4:
+  version "0.4.23"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-0.4.23.tgz#e65a2e3c7507ffade4109bc7575a76e50f8da915"
+  integrity sha1-5louPHUH/63kEJvHV1p25Q+NqRU=
+
 bson@~1.0.4:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.0.9.tgz#12319f8323b1254739b7c6bef8d3e89ae05a2f57"
@@ -72,6 +77,11 @@ bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
   integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
+
+check-types@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/check-types/-/check-types-3.2.0.tgz#05ec358449bbc15dec39c6ad57f2ae0ecd52aeb3"
+  integrity sha1-Bew1hEm7wV3sOcatV/KuDs1SrrM=
 
 connect-flash@^0.1.1:
   version "0.1.1"
@@ -171,6 +181,11 @@ encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
+
+es6-promise@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-2.1.1.tgz#03e8f3c7297928e5478d6ab1d0643251507bdedd"
+  integrity sha1-A+jzxyl5KOVHjWqx0GQyUVB73t0=
 
 es6-promise@3.2.1:
   version "3.2.1"
@@ -315,6 +330,11 @@ is-promise@^2.1.0:
   resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
   integrity sha1-eaKp7OfwlugPNtKy87wWwf9L8/o=
 
+isarray@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+  integrity sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=
+
 isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
@@ -324,6 +344,13 @@ kareem@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.0.tgz#ef33c42e9024dce511eeaf440cd684f3af1fc769"
   integrity sha512-6hHxsp9e6zQU8nXsP+02HGWXwTkOEw6IROhF2ZA28cYbUk4eJ6QbtZvdqZOdD9YPKghG3apk5eOCvs+tLl3lRg==
+
+kerberos@~0.0:
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/kerberos/-/kerberos-0.0.24.tgz#67e5fe0f0dbe240a505eb45de411d6031e7b381b"
+  integrity sha512-QO6bFq9eETHB5zcA0OJiQtw137TH45OuUcGtI+QGg2ZJQIPCvwXL2kjCqZZMColcIdbPhj4X40EY5f3oOiBfiw==
+  dependencies:
+    nan "~2.10.0"
 
 lodash.flattendeep@^4.0.0:
   version "4.4.0"
@@ -372,6 +399,24 @@ mime@1.4.1:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
   integrity sha512-KI1+qOZu5DcW6wayYHSzR/tXKCDC5Om4s1z2QJjDULzLcmf3DvzS7oluY4HCTrc+9FiKmWUgeNLg7W3uIQvxtQ==
 
+mongo-driver@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/mongo-driver/-/mongo-driver-1.3.3.tgz#3b48324de072ba44b70225537c6797826855b604"
+  integrity sha1-O0gyTeByukS3AiVTfGeXgmhVtgQ=
+  dependencies:
+    check-types "3.2.0"
+    mongodb "2.0.39"
+    when "3.7.3"
+
+mongodb-core@1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-1.2.6.tgz#4aeffe09070814d257899e441e49affd6cd8c7c5"
+  integrity sha1-Su/+CQcIFNJXiZ5EHkmv/WzYx8U=
+  dependencies:
+    bson "~0.4"
+  optionalDependencies:
+    kerberos "~0.0"
+
 mongodb-core@2.1.20:
   version "2.1.20"
   resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.20.tgz#fece8dd76b59ee7d7f2d313b65322c160492d8f1"
@@ -401,6 +446,15 @@ mongodb-core@3.2.2, mongodb-core@^3.2.2:
     safe-buffer "^5.1.2"
   optionalDependencies:
     saslprep "^1.0.0"
+
+mongodb@2.0.39:
+  version "2.0.39"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.0.39.tgz#02977bd825293dbca349d6671744c526549646e5"
+  integrity sha1-Apd72CUpPbyjSdZnF0TFJlSWRuU=
+  dependencies:
+    es6-promise "2.1.1"
+    mongodb-core "1.2.6"
+    readable-stream "1.0.31"
 
 mongodb@3.1.13:
   version "3.1.13"
@@ -475,6 +529,11 @@ ms@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+
+nan@~2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
+  integrity sha512-bAdJv7fBLhWC+/Bls0Oza+mvTaNQtP+1RyhhhvD95pgUJz6XM5IzgmxOkItJ9tkoCiplvAnXI1tNmmUD/eScyA==
 
 negotiator@0.6.1:
   version "0.6.1"
@@ -620,6 +679,16 @@ raw-body@2.3.3:
     iconv-lite "0.4.23"
     unpipe "1.0.0"
 
+readable-stream@1.0.31:
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.31.tgz#8f2502e0bc9e3b0da1b94520aabb4e2603ecafae"
+  integrity sha1-jyUC4LyeOw2huUUgqrtOJgPsr64=
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
+
 readable-stream@2.2.7:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.7.tgz#07057acbe2467b22042d36f98c5ad507054e95b1"
@@ -729,6 +798,11 @@ statuses@~1.4.0:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
   integrity sha512-zhSCtt8v2NDrRlPQpCNtw/heZLtfUDqxBM1udqikb/Hbk52LK4nQSwr10u77iopCW5LsyHpuXS0GnEc48mLeew==
 
+string_decoder@~0.10.x:
+  version "0.10.31"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+  integrity sha1-YuIDvEF2bGwoyfyEMB2rHFMQ+pQ=
+
 string_decoder@~1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.0.3.tgz#0fc67d7c141825de94282dd536bec6b9bce860ab"
@@ -780,3 +854,8 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+when@3.7.3:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/when/-/when-3.7.3.tgz#a2189a408128a9962afb0ee2c271631d0a76f44b"
+  integrity sha1-ohiaQIEoqZYq+w7iwnFjHQp29Es=

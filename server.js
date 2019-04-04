@@ -14,16 +14,16 @@ const container = require('./container');
 
 require('dotenv').config();
 
-container.resolve(function (users, _) {
+container.resolve(function (users, _, home, admin) {
   //Eddies
   // mongoose.Promise = global.Promise;
   // mongoose.connect('mongodb://localhost/footballkik', {
   //   useMongoClient: true
   // });
   //mine
-  const mongoUrl = `${process.env.MONGODB_URLPRE}${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}${process.env.MONGODB_URLEND}`;
-  const dbURI = process.env.MONGO_DBURI;
-
+  const dbURI = `${process.env.MONGODB_URLPRE_OLD}${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}${process.env.MONGODB_URLEND_OLD}`;
+  //const dbURI = process.env.MONGO_DBURI;
+  console.log(dbURI);
   const options = {
     reconnectTries: Number.MAX_VALUE,
     poolSize: 10
@@ -72,6 +72,8 @@ container.resolve(function (users, _) {
     const router = require('express-promise-router')();
     // passing router to users.js
     users.SetRouting(router);
+    home.SetRouting(router);
+    admin.SetRouting(router);
     // use router we created
     app.use(router);
   }
