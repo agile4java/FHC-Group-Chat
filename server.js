@@ -23,10 +23,10 @@ container.resolve(function (users, _, home, admin) {
   //mine
   const dbURI = `${process.env.MONGODB_URLPRE_OLD}${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}${process.env.MONGODB_URLEND_OLD}`;
   //const dbURI = process.env.MONGO_DBURI;
-  console.log(dbURI);
   const options = {
     reconnectTries: Number.MAX_VALUE,
-    poolSize: 10
+    poolSize: 10,
+    useNewUrlParser: true
   }
 
   mongoose.connect(dbURI, options).then(
@@ -38,25 +38,6 @@ container.resolve(function (users, _, home, admin) {
     }
   );
 
-
-  // mongoose.Promise = global.Promise;
-  // mongoose.connect(mongoUrl, {
-  //   useNewUrlParser: true
-  // });
-
-  //Atlas Example Connection
-  // const MongoClient = require(‘mongodb’).MongoClient;
-  // const uri = "mongodb+srv://cconway:<password>@nextdaycode001-kbsxd.mongodb.net/test?retryWrites=true";
-  // const client = new MongoClient(uri, {
-  //   useNewUrlParser: true
-  // });
-  // client.connect(err => {
-  //   const collection = client.db("test").collection("devices");
-  //   // perform actions on the collection object
-  //   client.close();
-  // });
-
-
   const app = SetupExpress();
 
   function SetupExpress() {
@@ -67,14 +48,13 @@ container.resolve(function (users, _, home, admin) {
     });
     // Call configureExpress function below
     ConfigureExpress(app);
-
     // from install express-promise-router
     const router = require('express-promise-router')();
-    // passing router to users.js
+    // passing router to controllers
     users.SetRouting(router);
     home.SetRouting(router);
     admin.SetRouting(router);
-    // use router we created
+    // use router 
     app.use(router);
   }
 
@@ -93,6 +73,7 @@ container.resolve(function (users, _, home, admin) {
     }));
 
     app.use(validator());
+    // session middleware
     app.use(
       session({
         secret: 'thisisasecretkey',
@@ -100,14 +81,10 @@ container.resolve(function (users, _, home, admin) {
         saveInitialized: true,
         saveUninitialized: true,
         //Eddies
-        // store: new MongoStore({
-        //   mongooseConnection: mongoose.connection
-        // });
-        //mine
-        // store: new MongoStore({
-        //   mongooseConnection: mongoose.connection
-        }));
-    
+        store: new MongoStore({
+          mongooseConnection: mongoose.connection
+        })
+      }));
     // passport must be added after session
     app.use(passport.initialize());
     app.use(passport.session());
