@@ -3,14 +3,20 @@ const path = require('path');
 
 const container = dependable.container();
 
-const simpleDependencies = [['_', 'lodash'], ['passport', 'passport']];
+const simpleDependencies = [
+  ['_', 'lodash'],
+  ['passport', 'passport'],
+  ['Group', './models/groups'],
+  ['formidable', 'formidable'],
+  ['aws', './helpers/AWSUpload']
+];
 
-simpleDependencies.forEach(function(val) {
+simpleDependencies.forEach(function (val) {
   // val 0 is from above simpleDependencies
   // which is the abbrev eg "_"
   // val 1 is the translation from above
   // eg "loadash"
-  container.register(val[0], function() {
+  container.register(val[0], function () {
     return require(val[1]);
   });
 });
@@ -20,7 +26,7 @@ container.load(path.join(__dirname, '/controllers'));
 container.load(path.join(__dirname, '/helpers'));
 
 // register everything above to container
-container.register('container', function() {
+container.register('container', function () {
   return container;
 });
 
