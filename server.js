@@ -14,7 +14,7 @@ const container = require('./container');
 
 require('dotenv').config();
 
-container.resolve(function (users, _, home, admin) {
+container.resolve(function (users, _, home, admin, group) {
   //Eddies
   // mongoose.Promise = global.Promise;
   // mongoose.connect('mongodb://localhost/footballkik', {
@@ -54,6 +54,7 @@ container.resolve(function (users, _, home, admin) {
     users.SetRouting(router);
     home.SetRouting(router);
     admin.SetRouting(router);
+    group.SetRouting(router);
     // use router 
     app.use(router);
   }
@@ -89,6 +90,7 @@ container.resolve(function (users, _, home, admin) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());
+    // Register lodash as a global variable
     app.locals._ = _;
   }
 })

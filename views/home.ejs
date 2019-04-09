@@ -1,128 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>
+        FHC
+    </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet"> 
 
     <link rel="stylesheet" href="/css/home.css">
 </head>
-<body>
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">App Name</a>
-    </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Members</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdpwn <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-  
-<div class="col-md-12">
-   <form action="#" method="post">
-       <div class="form-group ad-30" style="margin-top:8px;">
-            <div class="input-group search-style">
-                <input class="form-control new-search-bar"  name="country" id="search" placeholder="Enter Your Club Name" type="text">
-                <span class="input-group-btn">
-                    <button class="btn input-btn" type="" id="search-form">Search</button>
-                </span>
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h5 class="text-white h4">Collapsed content</h5>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
             </div>
         </div>
-   </form>
-</div>
-  
-<div class="col-md-12">
-    <div class="">
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand text-muted" id="brand-font" href="#">1078</a>
+        </nav>
+    </div>
+
+
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="filter-container">
-                            <div class="card">
-                                <form action="#" method="post">
-                                    <div class="content">
-                                        <p class="filter">
-                                            FILTER
-                                        </p>
-                                        <hr/>
-                                        <select class="" name="country" id="country" >
-                                            <option value="">Filter By Country</option>
-											<option>England</option>
-											<option>Germany</option>
-											<option>France</option>
-                                        </select>
-                                        <div class="clearfix"></div>
-                                        <button class="btn add-apply">Apply</button>
-                                    </div>
-                                </form>
+            <% _.forEach(data, function(val) { %>
+            <div class="card ml-2">
+                <div class="card-header bg-dark">
+                    <h4 class="text-muted">GROUP</h4>
+                </div>
+                <form action="#" method="post" id="add-fav">
+                    <div class="">
+                        <div class="thumbnail">
+                            <img alt="">
+                            <div class="caption">
+                                <div class="card-body">
+                                    <h3 class="text-center"><%= val.name %></h3>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-dark">
+                                <button class="btn btn-light add-fav">
+                                    Add To Favs
+                                </button>
+                                <a href="/group/<%= val.name %>" type="button" class="btn btn-light">Go To</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            
-            <div class="col-md-9">
-                <div>
-                    <div class="category-list">
-                        <div class="row">
-                            <form action="#" method="post" id="add-fav">
-                                <div class="item col-md-4">
-                                    <div class="thumbnail">
-                                       <img alt="">
-                                        <div class="caption">
-                                            <h4>Name</h4>
-                                            
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-6">
-                                                    <p>
-                                                        Country
-                                                    </p>
-                                                </div>
-                                                
-                                                <div class="col-xs-12 col-md-6">
-                                                    <button class="btn add-fav">
-                                                        Add To Favorite
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+            <%  }) %>
         </div>
-    </div>
-</div>
 
-  
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
+
 </html>

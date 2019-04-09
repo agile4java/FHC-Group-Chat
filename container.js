@@ -7,6 +7,7 @@ const simpleDependencies = [
   ['_', 'lodash'],
   ['passport', 'passport'],
   ['Group', './models/groups'],
+  ['async', 'async'],
   ['formidable', 'formidable'],
   ['aws', './helpers/AWSUpload']
 ];
