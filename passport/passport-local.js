@@ -55,12 +55,12 @@ passport.use(
   'local.login',
   new LocalStrategy(
     {
-      usernameField: 'email',
+      usernameField: 'username',
       passwordField: 'password',
       passReqToCallback: true
     },
     (req, email, password, done) => {
-      User.findOne({'email': email }, (err, user) => {
+      User.findOne({'username': username }, (err, user) => {
         if (err) {
           console.log(err);
           return done(err);
@@ -71,6 +71,8 @@ passport.use(
           messages.push('Email is not in Database or Password is Invalid');
           return done(null, false, req.flash('error', messages));
         }
+        console.log("passport local login returns:");
+        console.log(user);
         return done(null, user);
       });
     }

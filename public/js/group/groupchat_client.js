@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var socket = io();
     var room = $('#groupName').val();
+    var sender = $('#sender').val();
 
    
 
@@ -18,8 +19,12 @@ $(document).ready(function(){
     });
     // Listen for new events after connected
     socket.on('newMessage', function(data) {
-        console.log(data.text);
-        console.log(data.room);
+        var template = $('#message-template').html();
+        var message = Mustache.render(template, {
+            text: data.text,
+            sender: data.from,
+        });
+        $('#messages').append(message);
     })
     // Emit message
     $('#message-form').on('submit', function(e) {
@@ -30,7 +35,8 @@ $(document).ready(function(){
         // 2nd param - object containing message
         socket.emit('createMessage', { 
             text: msg,
-            room: room
+            room: room,
+            from: sender
         }, function() {
             // Clear new message textArea after msg is sent
             $('#msg').val('');

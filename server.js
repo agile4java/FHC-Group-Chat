@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const socketio = require('socket.io');
+const { Users } = require('./helpers/UsersClass');
 
 const container = require('./container');
 
