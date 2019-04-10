@@ -4,7 +4,8 @@ module.exports = function() {
             router.get('/group/:name', this.groupPage);
         },
         groupPage: function(req, res) {
-            res.render('groupchat/group');
+            const name = req.params.name;
+            res.render('groupchat/group', { title: '1078 - Group', groupName: name });
         }
     }
 }

@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
+const socketio = require('socket.io');
 
 const container = require('./container');
 
@@ -43,11 +44,15 @@ container.resolve(function (users, _, home, admin, group) {
   function SetupExpress() {
     const app = express();
     const server = http.createServer(app);
+    // variable for socket.io 
+    const io = socketio(server);
     server.listen(3000, function () {
       console.log('listening on port 3000');
     });
     // Call configureExpress function below
     ConfigureExpress(app);
+    // Require socketio logic
+    require('./socket/groupchat')(io);
     // from install express-promise-router
     const router = require('express-promise-router')();
     // passing router to controllers

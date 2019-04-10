@@ -12,7 +12,6 @@ module.exports = function (async, Group, _) {
                 }
             ], (err, results) => {
                 const res1 = results[0];
-                console.log(res1);
                 res.render('home', {title: '1078 - Home', data: res1});
             })
             

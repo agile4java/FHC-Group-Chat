@@ -9,30 +9,15 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <h5 class="text-white h4">Collapsed content</h5>
-                <span class="text-muted">Toggleable via the navbar brand.</span>
-            </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand text-muted" id="brand-font" href="#">1078</a>
-        </nav>
-    </div>
+   <%- include ../partials/navbar.ejs %>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
             <!-- Online Friends Accordion 1 -->
@@ -40,8 +25,8 @@
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link my-accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link my-accordion-btn" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Online Friends
                             </button>
                         </h2>
@@ -78,6 +63,7 @@
                         </div>
                         <div class="message_write">
                             <form action="#" id="message-form" method="post">
+                                <input type="hidden" id="groupName" value="<%= groupName %>">
                                 <textarea class="form-control" name="message" id="msg"
                                     placeholder="Type a message"></textarea>
                                 <div class="clearfix"></div>
@@ -141,12 +127,17 @@
         </div>
     </div>
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/group/groupchat_client.js"></script>
 </body>
 
 </html>
