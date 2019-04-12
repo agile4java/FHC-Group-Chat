@@ -20,15 +20,15 @@ $(document).ready(function(){
         });
     });
 
-    // // ID006B
-    // socket.on('usersList', function(users) {
+    // ID006B
+    socket.on('usersList', function(users) {
 
-    //     var ol = $('<ol></ol>');
-    //     for(var i = 0; i < users.length; i++) {
-    //         ol.append('<p>'+ users[i] +'</p>');
-    //     }
-    //     $('#roomMembers').html(ol);
-    // });
+        var ol = $('<ol></ol>');
+        for(var i = 0; i < users.length; i++) {
+            ol.append('<p>'+ users[i] +'</p>');
+        }
+        $('#roomMembers').html(ol);
+    });
 
 
     // ID003A Client Sending New Message

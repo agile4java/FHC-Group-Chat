@@ -1,7 +1,6 @@
 module.exports = function(io, Users) {
 
     const users = new Users();
-    // var users = [];
     // ID002A Listen for client connections
     io.on('connection', (socket) => {
         console.log('User connected');
@@ -17,9 +16,7 @@ module.exports = function(io, Users) {
             console.log(users);
             // ID006A
             io.to(params.room).emit('usersList', users.GetUsersList(params.room));
-            // users.push(params.name);
-            // users.push(params.room);
-            // users.push(socket.id);
+        
             callback();
         });
 
@@ -36,13 +33,11 @@ module.exports = function(io, Users) {
             callback();
          });
 
-        //  socket.on('disconnect', () => {
-        //      var user = users.RemoveUser(socket.id);
-
-        //      if(user) {
-        //          io.to(user.room).emit('usersList', users.GetUsersList(user.room));
-        //      }
-        //  });
+        socket.on('disconnect', () => {
+            var userRoom =  users.GetUserRoom(socket.id);
+            users.DropUser(socket.id);
+            io.to(userRoom).emit('usersList', users.GetUsersList(userRoom));
+        });
 
     });
    

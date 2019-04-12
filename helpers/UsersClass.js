@@ -13,21 +13,6 @@ class Users {
         return users;
     }
 
-    // GetUser(id) {
-    //     var getUser = this.users.filter((userId) => {
-    //         return userId.id === id;
-    //     })[0];
-    //     return getUser;
-    // }
-
-    // RemoveUser(id) {
-    //     var user = this.GetUser(id);
-    //     if(user) {
-    //         this.users = this.users.filter((user) => user.id !== id);
-    //     }
-    //     return user;
-    // }
-
     GetUsersList(room) {
       var users = this.users.filter((user) => user.room === room);
 
@@ -36,6 +21,24 @@ class Users {
       });
 
       return namesArray;
+    }
+
+    GetUserRoom(id) {
+        for(var i = 0; i < this.users.length; i++) {
+            if(this.users[i].id === id){
+                return this.users[i].room;
+            }
+        }
+    }
+
+
+
+    DropUser(id) {
+        for(var i = 0; i < this.users.length; i++) {
+            if(this.users[i].id === id){
+                (this.users).splice(i, 1);
+            }
+        }
     }
 }
 

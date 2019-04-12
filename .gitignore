@@ -1,5 +1,6 @@
 /secret
 /node_modules
+/downloads
 
 # environment variables
 .env
