@@ -1,0 +1,105 @@
+From Tutorials Point Socket.io:
+
+ Socket.IO provides us the ability to create custom events. You can create and fire custom events using the socket.emit function.
+
+1C.   Emit custom event from client:
+
+    var socket = io();
+    socket.emit(<custom_event>, )
+
+1S.    Handle custom client event server-side:
+
+    io.on('connection', functioon(socket) {
+        socket.on(<custom_event>, function(data) {
+            Handle custom client event on server
+        })
+    })
+
+Broadcasting: Sending messages to all connected clients:  
+
+    Multiple levels:  
+      2S. To  all clients:                io.sockets.emit,
+            Example:
+                io.on('connection', function(socket) {
+                    io.sockets.emit('broadcast', { goes to all clients })
+                })
+
+      2C.  Handle on client:
+            socket.on('broadcast', function(data) {
+                Handle broadcast from server
+            })
+
+      3S. To all clients except sender / emitter:   socket.broadcast.emit
+            Example:
+                socket.broadcast.emit('custom_event', { goes to all clients except sender / emitter })
+                
+                socket.emit('custom_event', { this will go to only emitter })
+
+      3C.  Handle on client:  
+              socket.on('custom_event', function(data) {
+                  Handle on clients
+              })
+
+
+NAMESPACES NAMESPACES:
+    Socket.IO allows you to “namespace” your sockets, which essentially means assigning different endpoints or paths
+
+    The root namespace '/' is the default namespace.
+
+    var socket = io();  will connect to the default namespace.
+
+    4S. We can create our own custom namespaces. To set up a custom namespace,      we can call the ‘of’ function on the server side:
+        Example:
+            var io = require('socket.io')(http);
+            var namesp = io.of('/my-namespace');
+            namesp.on('connection', function(socket) {
+                console.log('someone connected');
+                namesp.emit('hi', 'Hello everyone!');
+            });
+
+    4C. To connect client to namespace, proide namespace as arg to io               constructor call:
+            var socket = io('/my-namespace');
+            socket.on('hi',function(data) {
+                document.body.innerHTML = '';
+                document.write(data);
+            });
+
+ROOMS:
+    Within each namespace, you can also define arbitrary channels that sockets can join and leave. These channels are called rooms.
+    **rooms can only be joined on the server side.
+
+    5S. Call join method on the socket to subscribe the socket to a give channel/   room.
+        Example:
+            var roomno = 1;
+            io.on('connection', function(socket) {   
+                socket.join("room-"+roomno);
+
+    5C. Handle connectToRoom event on the client:
+             var socket = io();
+             socket.on('connectToRoom',function(data) {
+                 Handle connect to room event on client
+             }
+
+    6S. To leave room must call the leave function from server:
+            socket.leave("room-"+roomno);
+
+   //Send this event to everyone in the room.
+   io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. "+roomno);
+})
+
+
+Out-Socket object is created on the client, can use to handle errors client side:
+     Error:  Connection fails, to connect again:
+        socket.on('connect_failed', function(){
+            console.log("Sorry connection issue");
+        })
+
+
+DEBUGGING: 
+    Server side:
+    User ExpressJS's debug module to debug:
+        DEBUG=* node app.js  
+        This will colorize and output everything that happens to server console.
+    Client side:
+    Paste this to console, click enter and refresh your page. This will again output everything related to Socket.io to your console.
+        localStorage.debug = '*';
