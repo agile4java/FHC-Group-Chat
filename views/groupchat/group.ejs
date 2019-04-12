@@ -15,9 +15,9 @@
 </head>
 
 <body>
-   <%- include ../partials/navbar.ejs %>
+    <%- include ../partials/navbar.ejs %>
 
-   <h1 class="mt-2 mb2 ml-4"><%= groupName %></h1>
+    <h1 class="mt-2 mb2 ml-4"><%= groupName %></h1>
     <div class="container-fluid">
         <div class="row">
 
@@ -75,19 +75,19 @@
                                         Message Body
                                     </div>
                                 </li> -->
-                            
+
                             </ul>
                             <script id="message-template" type="text/template">
                                 <li class="left">
                                         <!-- <span class="chat-img1 pull-left">
                                             <img src="http://placehold.it/100x100" alt="" class="img-circle">
                                         </span> -->
-                                        <div class="chat-body1">
+                                        <div class="">
                                             <span class="chat-name">
-                                                {{ sender }}
+                                                {{ name }} 
                                             </span>
                                             <br>
-                                            {{ text }}
+                                           <p class="text-dark ml-2"> {{ text }} </p>
                                         </div>
                                     </li>
                             </script>
@@ -95,7 +95,7 @@
                         <div class="message_write">
                             <form action="#" id="message-form" method="post">
                                 <input type="hidden" id="groupName" value="<%= groupName %>">
-                                <input type="hidden" name="sender" id="sender" value="">
+                                <input type="hidden" name="sender" id="sender" value="<%= user.username %>">
                                 <textarea class="form-control" name="message" id="msg"
                                     placeholder="Type a message"></textarea>
                                 <div class="clearfix"></div>
@@ -123,9 +123,7 @@
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                         data-parent="#accordionExample">
-                        <div class="card-body">
-                            Anim pariatur
-                        </div>
+                        <div id="roomMembers"></div>
                     </div>
                 </div>
             </div>

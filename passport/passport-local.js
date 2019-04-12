@@ -5,7 +5,6 @@ const User = require('../models/user');
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser((user, done) => {
-
   done(null, user.id);
 });
 
@@ -20,12 +19,12 @@ passport.use(
   'local.signup',
   new LocalStrategy(
     {
-      usernameField: 'email',
+      usernameField: 'username',
       passwordField: 'password',
       passReqToCallback: true
     },
-    (req, email, password, done) => {
-      User.findOne({'email': email }, (err, user) => {
+    (req, username, password, done) => {
+      User.findOne({'username': username }, (err, user) => {
         if (err) {
           console.log(err);
           return done(err);
@@ -34,17 +33,15 @@ passport.use(
           return done(
             null,
             false,
-            req.flash('error', 'User with email already exists')
+            req.flash('error', 'User with username already exists')
           );
         }
         const newUser = new User();
         newUser.username = req.body.username;
-        newUser.email = req.body.email;
         newUser.password = newUser.encryptPassword(req.body.password);
         newUser.save(err => {
           console.log(err);
           done(null, newUser);
-          console.log("new user = ", newUser);
         });
       });
     }
@@ -59,20 +56,17 @@ passport.use(
       passwordField: 'password',
       passReqToCallback: true
     },
-    (req, email, password, done) => {
+    (req, username, password, done) => {
       User.findOne({'username': username }, (err, user) => {
         if (err) {
-          console.log(err);
           return done(err);
         }
 
         const messages = [];
         if (!user || !user.validUserPassword(password)) {
-          messages.push('Email is not in Database or Password is Invalid');
+          messages.push('Username is not in Database or Password is Invalid');
           return done(null, false, req.flash('error', messages));
         }
-        console.log("passport local login returns:");
-        console.log(user);
         return done(null, user);
       });
     }

@@ -7,3 +7,9 @@
     font-family: 'Baloo Thambi', cursive;
     font-size: 24px;
 }
+
+.text-card-header {
+    font-family: 'Baloo Thambi', cursive;
+    font-size: 48px;
+    text-align: center;
+}

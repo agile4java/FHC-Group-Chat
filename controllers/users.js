@@ -18,7 +18,7 @@ module.exports = function(_, passport, User) {
     indexPage: function(req, res) {
       const errors = req.flash('error');
       return res.render('index', {
-        title: 'Jades Chat | Login',
+        title: '1078 | Login',
         messages: errors,
         hasErrors: errors.length > 0
       });
@@ -33,7 +33,7 @@ module.exports = function(_, passport, User) {
     getSignUp: function(req, res) {
       const errors = req.flash('error');
       return res.render('signup', {
-        title: 'Jades Chat | SignUp',
+        title: '1078 | SignUp',
         messages: errors,
         hasErrors: errors.length > 0
       });

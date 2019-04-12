@@ -53,7 +53,7 @@ container.resolve(function (users, _, home, admin, group) {
     // Call configureExpress function below
     ConfigureExpress(app);
     // Require socketio logic
-    require('./socket/groupchat')(io);
+    require('./socket/groupchat')(io, Users);
     // from install express-promise-router
     const router = require('express-promise-router')();
     // passing router to controllers

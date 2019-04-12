@@ -4,8 +4,7 @@ const groupNames = mongoose.Schema({
     name: {type: String, default: '', unique: true },
     image: {type: String, default: 'default.png'},
     members: [{
-        username: {type: String, default: ''},
-        email: {type: String, default: ''}
+        username: {type: String, default: ''}
     }]
 });
 

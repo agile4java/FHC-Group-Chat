@@ -35,6 +35,14 @@ passport.use(
           const newUser = new User();
           newUser.facebook = profile.id;
           newUser.fullname = profile.displayName;
+          // get first name from fullname
+          // user as username
+          var nameArray = (newUser.fullname).split(" ");
+          console.log(nameArray);
+          newUser.username = nameArray[0];
+          console.log(newUser.username);
+
+
           newUser.email = profile._json.email;
           newUser.userImage =
             'https://graph.facebook.com/' + profile.id + '/picture?type=large';

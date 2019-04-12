@@ -6,9 +6,8 @@ module.exports = function() {
       req.checkBody('username', 'Username is Required').notEmpty();
       req
         .checkBody('username', 'Username must be at least 3 characters')
-        .isLength({ min: 4 });
-      req.checkBody('email', 'Email is Required').notEmpty();
-      req.checkBody('email', 'Email is invalid').isEmail();
+        .isLength({ min: 3 });
+     
       req.checkBody('password', 'Password is Required').notEmpty();
 
       req
@@ -29,8 +28,8 @@ module.exports = function() {
     },
 
     LoginValidation: (req, res, next) => {
-      req.checkBody('email', 'Email is Required').notEmpty();
-      req.checkBody('email', 'Email is invalid').isEmail();
+      req.checkBody('username', 'Username is Required').notEmpty();
+    
       req.checkBody('password', 'Password is Required').notEmpty();
 
       req
