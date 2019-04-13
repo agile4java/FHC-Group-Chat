@@ -25,6 +25,7 @@ module.exports = function(_, passport, User) {
     },
 
     postLogin: passport.authenticate('local.login', {
+    
       successRedirect: '/home',
       failureRedirect: '/',
       failureFlash: true

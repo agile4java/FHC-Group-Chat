@@ -36,6 +36,7 @@ passport.use(
             const newUser = new User();
             newUser.google = profile.id;
             newUser.fullname = profile.displayName;
+            newUser.username = profile.displayName;
             newUser.email = profile.emails[0].value;
             newUser.userImage = profile._json.image.url;
             newUser.save((err) => {
