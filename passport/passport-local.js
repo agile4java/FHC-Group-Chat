@@ -67,7 +67,6 @@ passport.use(
           messages.push('Username is not in Database or Password is Invalid');
           return done(null, false, req.flash('error', messages));
         }
-        console.log(user);
         return done(null, user);
       });
     }

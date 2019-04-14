@@ -2,7 +2,7 @@ $(document).ready(function(){
     // Global IO variable
     var socket = io();
     var room = $('#groupName').val();
-    // var name = $('#sender').val();
+    var name = $('#sender').val();
 
    
 

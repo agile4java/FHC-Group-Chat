@@ -6,12 +6,14 @@
         </div>
     </div>
     <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
+        <a class="navbar-brand text-muted" id="brand-font" href="/home">1078</a>
+        
+        <div>Location: {{ title }} </div>
+        <div>Hi, {{ user.username }} </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
             aria-expanded="false" aria-label="Toggle navigation">
-            <%= user.username %>
-            <!-- <span class="navbar-toggler-icon"></span> -->
+            {{ user.username }}
         </button>
-        <a class="navbar-brand text-muted" id="brand-font" href="/home">1078</a>
     </nav>
 </div>

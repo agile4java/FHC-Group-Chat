@@ -51,7 +51,7 @@ passport.use(
           });
           newUser.save(err => {
             console.log("passport facebook login returns:");
-            console.log(user);
+            console.log(newUser);
             return done(null, newUser);
           });
         }

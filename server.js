@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const exphbs = require('express-handlebars');
 const http = require('http');
 const cookieParser = require('cookie-parser');
 const validator = require('express-validator');
@@ -73,7 +74,8 @@ container.resolve(function (users, _, home, admin, group) {
 
     app.use(express.static('public'));
     app.use(cookieParser());
-    app.set('view engine', 'ejs');
+    app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+    app.set('view engine', 'handlebars');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
       extended: true
