@@ -15,9 +15,11 @@
 </head>
 
 <body>
+    <div class="container" style="display:none">
     <div>{{ groupName }} </div>
     <div>{{ user.username }}</div>
-    <h1 class="mt-2 mb2 ml-4"><%= groupName %></h1>
+    </div>
+    <h2 class="mt-2 mb2 ml-4">{{ groupName }}</h2>
     <div class="container-fluid">
         <div class="row">
 
@@ -94,7 +96,7 @@
                         </div>
                         <div class="message_write">
                             <form action="#" id="message-form" method="post">
-                                <input type="hidden" id="groupName" value="<%= groupName %>">
+                                <input type="hidden" id="groupName" value="{{ groupName }}">
                                 <input type="hidden" name="sender" id="sender" value="dave">
                                 <textarea class="form-control" name="message" id="msg"
                                     placeholder="Type a message"></textarea>
